@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeLeaf.org">
+<head>
+<meta charset="utf-8" />
+
+<title>Liste des etudiants</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+	<script type="text/javascript" th:href="@{/css/bootstrap.min.js}" >  </script>
+
+<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css"
+	th:href="@{/css/mystyle.css}" />
+
+</head>
+<body>
+	<div class="container">
+		<div class="col-md-6 col-xs-12 spacer col-md-offset-3">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Editer un étudiant </div>
+				<div class="panel-body">
+					<form th:action="@{UpdateEtudiant}" method="post"
+						th:object="${etudiant}" enctype="multipart/form-data">
+						<div class="form-group">
+							<label class="control-label">ID:</label> <input type="text"
+								th:field="*{id}" class="form-control" /> <span
+								class="text-danger" th:errors="*{nom}"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Nom:</label> <input type="text"
+								th:field="*{nom}" class="form-control" /> <span
+								class="text-danger" th:errors="*{nom}"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Date Naissance:</label> <input
+								type="date" th:field="*{dateNaissance}" class="form-control" />
+							<span class="text-danger" th:errors="*{dateNaissance}"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Email:</label> <input type="text"
+								th:field="*{email}" class="form-control" /> <span
+								class="text-danger" th:errors="*{email}"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Photo:</label> <input type="file"
+								name="picture" class="form-control" /> <span
+								class="text-danger" th:errors="*{photo}"></span>
+						
+						<img class="img-circle" th:src="@{getPhoto(id=${etudiant.id})}"  width="100" heigth="100"/>
+							<button type="submit" class="btn btn-primary">Save</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

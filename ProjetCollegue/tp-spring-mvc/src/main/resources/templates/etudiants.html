@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeLeaf.org">
+<head>
+<meta charset="utf-8" />
+
+<title>Liste des etudiants</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+
+<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css"
+	th:href="@{/css/mystyle.css}" />
+</head>
+<body>
+
+	<div class="container spacer">
+		<div class="row">
+			<a th:href="@{form}">Saisir un étudiant</a>
+		</div>
+		<div class="row spacer">
+			<form th:action="@{index}" method="get">
+				<div class="from-group">
+					<label>Mot clé :</label> <input type="text" name="motCle"
+						th:value="${motCle}" />
+					<button type="submit">Chercher</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	 <!-- Page Features -->
+    <div class="row text-center">
+	<div class="container">
+		<table class="table table-inverse spacer ">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nom</th>
+					<th>Date</th>
+					<th>Email</th>
+					<th>Photo</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="e:${pageEtudiants.content}">
+					<td th:text="${e.id}"></td>
+					<td th:text="${e.nom}"></td>
+					<td th:text="${e.dateNaissance}"></td>
+					<td th:text="${e.email}"></td>
+					<td >	<img class="img-circle" th:src="@{getPhoto(id=${e.id})}"  width="100" heigth="100"/></td>
+					<td> <a onclick="return confirm('êtes-vous sure ?')" th:href="@{supprimer(id=${e.id})}"> Supprimer</a></td>
+					<td> <a th:href="@{edit(id=${e.id})}">Edit</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+    </div>
+	<div class="container">
+	 	<ul class="nav nav-pills nav-justified">
+			<li th:each="p:${pages}" th:class="${p==pageCourante}?active:''">
+				<a th:text="${p}" th:href="@{index(page=${p},motCle=${motCle})}"></a>
+			</li>
+	     </ul>
+	</div>
+</body>
+</html>

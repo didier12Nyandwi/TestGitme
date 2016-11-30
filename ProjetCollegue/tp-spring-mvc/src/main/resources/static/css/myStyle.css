@@ -1,0 +1,18 @@
+.spacer{
+	margin-top: 20px
+}
+.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    height: 121px;
+}
+.btn-info, .btn-info:hover {
+    color: #000;
+    background-color: #faebd7;
+    border-color: #faebd7;
+ }
+ 
+ .btn-warning {
+    color: #fff;
+    background-color: #cfcfcf;
+    border-color: #faebd7;
+ }
+
