@@ -10,7 +10,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import java.lang.Object.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -22,7 +22,7 @@ import com.treenity.entities.Etudiant;
 
 @SpringBootApplication
 public class TpSpringMvcApplication {
-
+ 
 	public static void main(String[] args) throws ParseException {
 		ApplicationContext ctx = SpringApplication.run(TpSpringMvcApplication.class, args);
 		EtudiantRepository etudiantRepository = ctx.getBean(EtudiantRepository.class);
@@ -42,6 +42,7 @@ public class TpSpringMvcApplication {
 //		}
 		
 //		Page<Etudiant> etds = etudiantRepository.findAll(new PageRequest(0, 5));
+		
 		Page<Etudiant> etds = etudiantRepository.chercherEtudiants("%A%", new PageRequest(0, 5));
 		etds.forEach(e -> System.out.println(e.getNom()));
 
