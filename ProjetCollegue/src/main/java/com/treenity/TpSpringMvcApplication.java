@@ -1,8 +1,11 @@
 package com.treenity;
 
+<<<<<<< HEAD
 /**
  * Tarik changed the project
  */
+=======
+>>>>>>> refs/remotes/origin/master
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
